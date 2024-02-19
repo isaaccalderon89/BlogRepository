@@ -5,6 +5,8 @@ import com.company.blogService.repository.usuario.UsuarioRepository;
 import com.company.blogService.service.usuario.UsuarioService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,29 +20,30 @@ public class UsuarioController {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Usuario> getAll(){
-        return usuarioService.findAll();
+    @GetMapping(value = "")
+    public ResponseEntity<List<Usuario>> getAll(){
+        List<Usuario> usuarios = usuarioService.findAll();
+        return ResponseEntity.ok(usuarios);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @PostMapping(value = "")
     public Usuario create(@RequestBody Usuario newUsu){
         return usuarioService.save(newUsu);
     }
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public Usuario getOne(@PathVariable Long id){
         return usuarioService.findById(id).get();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario){
         usuario.setId(id);
         return usuarioService.save(usuario);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable Long id){
          usuarioService.delete(id);
     }

@@ -3,6 +3,7 @@ package com.company.blogService.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Usuario")
@@ -19,4 +20,5 @@ public class Usuario {
     private String nombre;
 
     private String email;
+
 }
