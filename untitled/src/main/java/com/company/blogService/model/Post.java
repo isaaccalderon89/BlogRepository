@@ -27,8 +27,9 @@ public class Post {
     private LocalDateTime fechaPublicacion;
 
     @ManyToOne // Un usuario puede realizar muchas publicaciones
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "publicacion")// Una publicación puede tener muchos comentarios
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
 }

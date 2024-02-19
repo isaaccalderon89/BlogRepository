@@ -21,4 +21,6 @@ public class Usuario {
 
     private String email;
 
+    /*@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // Un usuario puede realizar muchas publicaciones
+    private List<Post> publicaciones;*/
 }

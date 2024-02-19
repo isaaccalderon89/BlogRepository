@@ -14,8 +14,8 @@ public class PostJpaRepository implements IPostRepository {
     PostRepository postRepo;
     @Override
     public List<Post> findAll() {
-        return findAll();
-    }
+    return postRepo.findAll();
+}
 
     @Override
     public Optional<Post> findByUsuario(Usuario usuario) {

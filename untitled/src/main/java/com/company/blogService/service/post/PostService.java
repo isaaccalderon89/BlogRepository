@@ -35,13 +35,14 @@ public class PostService {
         Long postId = post.getId();
         if (postId == null || !iPostRepository.existsById(postId)) {
         throw new IllegalArgumentException("El post que intentas actualizar no existe");
-         }
+        }
         if (post.getContenido() == null || post.getContenido().trim().isEmpty()) {
         throw new IllegalArgumentException("El contenido del post no puede estar vacío");
         }
 
         return iPostRepository.save(post);
     }
+
 
     public void deletePost(Long id) {
         if (id == null) {
