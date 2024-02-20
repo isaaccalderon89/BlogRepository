@@ -1,5 +1,6 @@
 package com.company.blogService.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,10 +27,12 @@ public class Post {
     @Column(name = "fecha_publicacion")
     private LocalDateTime fechaPublicacion;
 
+    @JsonIgnore
     @ManyToOne // Un usuario puede realizar muchas publicaciones
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
 }

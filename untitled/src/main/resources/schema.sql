@@ -1,28 +1,4 @@
--- Crear la tabla Usuario si no existe
-CREATE TABLE IF NOT EXISTS Usuario (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE
-);
 
--- Crear la tabla Publicacion
-CREATE TABLE IF NOT EXISTS Publicacion (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(255) NOT NULL,
-    contenido TEXT NOT NULL,
-    fecha_publicacion TIMESTAMP, -- Permitir valores nulos
-    usuario_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
-);
-
--- Crear la tabla Comentario
-CREATE TABLE IF NOT EXISTS Comentario (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    contenido TEXT NOT NULL,
-    fecha_comentario TIMESTAMP,
-    publicacion_id INT,
-    FOREIGN KEY (publicacion_id) REFERENCES Publicacion(id)
-);
 
 -- Inserciones de ejemplo para la tabla Usuario
 INSERT INTO Usuario (nombre, email) VALUES

@@ -1,5 +1,6 @@
 package com.company.blogService.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Usuario {
 
     private String email;
 
-    /*@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // Un usuario puede realizar muchas publicaciones
-    private List<Post> publicaciones;*/
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // Un usuario puede realizar muchas publicaciones
+    private List<Post> publicaciones;
 }
